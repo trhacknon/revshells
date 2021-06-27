@@ -21,7 +21,9 @@ npx netlify dev
 Simply run the following commands within this repository to spin up the instance locally using a Docker container
 ```
 docker build -t revshells
+```
 
+```
 docker run -d -p 80:80 revshells
 ```
 Browse to http://localhost:80
