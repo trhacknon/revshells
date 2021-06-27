@@ -3,7 +3,7 @@ Ain't got time for using CSS the right way. !important everything!
 */
 
 [data-theme="light"] {
-    background-color: pink !important;
+    background-color: cyan !important;
 }
 
 [data-theme="light"] .card {
