@@ -27,27 +27,30 @@
 
         document.querySelector("#reverse-tab").addEventListener("click", () => {
             rsg.setState({
-                commandType: CommandType.ReverseShell
+                commandType: CommandType.ReverseShell,
             });
         })
 
         document.querySelector("#bind-tab").addEventListener("click", () => {
             rsg.setState({
-                commandType: CommandType.BindShell
-            });
+                commandType: CommandType.BindShell,
+            	encoding: "None"
+	    });
         })
 
         document.querySelector("#bind-tab").addEventListener("click", () => {
             document.querySelector("#bind-shell-selection").innerHTML = "";
             rsg.setState({
                 commandType: CommandType.BindShell
+
             });
         })
 
         document.querySelector("#msfvenom-tab").addEventListener("click", () => {
             document.querySelector("#msfvenom-selection").innerHTML = "";
             rsg.setState({
-                commandType: CommandType.MSFVenom
+                commandType: CommandType.MSFVenom,
+		encoding: "None"
             });
         });
 
@@ -161,7 +164,19 @@
                 if (rsg.getSelectedCommandName() === 'PowerShell #3 (Base64)') {
                     const encoder = (text) => text;
                     const payload = rsg.insertParameters(rsgData.specialCommands['PowerShell payload'], encoder)
-                    command = "powershell -e " + btoa(payload)
+                     command = "powershell -e " + btoa(toBinary(payload))
+                    function toBinary(string) {
+                        const codeUnits = new Uint16Array(string.length);
+                        for (let i = 0; i < codeUnits.length; i++) {
+                        codeUnits[i] = string.charCodeAt(i);
+                        }
+                        const charCodes = new Uint8Array(codeUnits.buffer);
+                        let result = '';
+                        for (let i = 0; i < charCodes.byteLength; i++) {
+                        result += String.fromCharCode(charCodes[i]);
+                        }
+                        return result;
+                    }
                 } else {
                     command = rsg.getReverseShellCommand()
                 }
