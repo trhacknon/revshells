@@ -8,7 +8,7 @@ Hosted Reverse Shell generator with a ton of functionality -- (great for CTFs)
 ### Hosted Instance
 http://www.stokndrop.cf/
 
-Htlogin:
+login::password=
 ```
 trhack::trhack
 ```
