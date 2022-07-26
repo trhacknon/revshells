@@ -7,8 +7,11 @@ Hosted Reverse Shell generator with a ton of functionality -- (great for CTFs)
 
 ### Hosted Instance
 http://www.stokndrop.cf/
+
 Htlogin:
+```
 trhack::trhack
+```
 ### Features
 
 - Generate common listeners and reverse shells
